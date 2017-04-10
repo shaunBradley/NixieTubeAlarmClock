@@ -13,6 +13,7 @@ struct Time
     Time(const Time& objToCopy);
     ~Time();
     bool operator==(const Time& other);
+    Time& operator =(const Time& objToCopy);
     void SetTime(ushort hour, ushort minute, ushort second);
     ushort GetHour();
     ushort GetMinute();

@@ -1,24 +1,21 @@
 #ifndef CLOCK_H
 #define CLOCK_H
-
-struct TimeID
-{
-  public:
-    TimeID(Time&);
-    Time* t;
-    const char* id;
-}
+#include "Time.h"
+#include "Dictonary.h"
 
 class Clock
 {
   public:
-    Clock(Time t);
-    void Update();
-    void AddAlarm();
-    void RemoveAlarm();
+    Clock(const Time& t);
+    virtual ~Clock();
+    virtual void Update();
+    void AddAlarm(const char* id, Time& t);
+    void RemoveAlarm(const char* id);
+    void ClearAllAlarms();
+    Clock& operator =(const Clock& objToCopy);
   protected:
     Time* m_currentTime;
-    std::map<char*, Time*> alarms[];
+    Dictonary<const char*, Time*>* m_alarms;
 };
 
 #endif

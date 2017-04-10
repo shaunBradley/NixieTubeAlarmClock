@@ -13,6 +13,14 @@ Time::Time(ushort hour, ushort minute, ushort second)
     this->SetTime(hour, minute, second);
 }
 
+Time& Time::operator =(const Time& objToCopy)
+{
+  this->m_hour = objToCopy.m_hour;
+  this->m_minute = objToCopy.m_minute;
+  this->m_second = objToCopy.m_second;
+  return *this;
+}
+
 void Time::SetTime(ushort hour, ushort minute, ushort second)
 {
   if (hour < 24){this->m_hour = hour;}
