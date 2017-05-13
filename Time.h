@@ -2,23 +2,23 @@
 #define TIME_H
 #include "Arduino.h"
 
-typedef unsigned short ushort;
-
 // stored in 24 hour time
 struct Time
 {
   public:
     Time();
-    Time(ushort hour, ushort minute, ushort second);
+    Time(uint8_t hour, uint8_t minute, uint8_t second);
     Time(const Time& objToCopy);
     ~Time();
     bool operator==(const Time& other);
-    Time& operator =(const Time& objToCopy);
-    void SetTime(ushort hour, ushort minute, ushort second);
-    ushort GetHour();
-    ushort GetMinute();
-    ushort GetSecond();
+    Time& operator ++();
+    Time& operator--();
+    void SetTime(uint8_t hour, uint8_t minute, uint8_t second);
+    uint8_t GetHour24();
+    uint8_t GetHour12();
+    uint8_t GetMinute();
+    uint8_t GetSecond();
   private:
-    ushort m_hour, m_minute, m_second;
+    uint8_t m_hour, m_minute, m_second;
 };
 #endif

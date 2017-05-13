@@ -3,12 +3,17 @@
 
 Clock::Clock(const Time& t)
 {
-  
+  this->m_currentTime = new Time(t);
 }
 
-Clock& Clock::operator =(const Clock& objToCopy)
+Clock::~Clock()
 {
-  
+  // nothing created with 'new'
+}
+
+void Clock::Tick()
+{
+  (*this->m_currentTime)++;
 }
 
 void Clock::AddAlarm(const char* id, Time& t)
